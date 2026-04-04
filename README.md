@@ -1,6 +1,6 @@
 # homebrew-yaw
 
-Homebrew tap for [yaw](https://yaw.sh) — terminal, connections, ai.
+Homebrew tap for [yaw](https://yaw.sh) — terminal, ai, connections.
 
 ## Usage
 
