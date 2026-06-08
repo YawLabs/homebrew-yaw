@@ -1,11 +1,11 @@
 cask "yaw" do
   arch arm: "arm64", intel: "x64"
-  version "1.9.42"
+  version "1.9.43"
 
   if Hardware::CPU.arm?
-    sha256 "ed48ac922ea0a1b99a2ee8d5f8f2923437b79811c4e3de00fd1d00a0082f3e93"
+    sha256 "a6cc5c05cd0ed6dae0fa72930ea07a7ecd9b4af71c6974e7912767ab95b1be8e"
   else
-    sha256 "257f62d66e4095f6cf126a8005b468a9dc2886bad60c15534421c1fe8aaf8293"
+    sha256 "7c210c87ab514c802870266973d126380694e4e445f19748af00aee28d111aa2"
   end
 
   url "https://downloads.yaw.sh/yaw-darwin-#{arch}-#{version}.zip"
