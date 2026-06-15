@@ -7,9 +7,14 @@ Homebrew tap for [yaw](https://yaw.sh) — terminal, ai, connections.
 ## Usage
 
 ```
-brew tap yaw-term/yaw
+brew tap yawlabs/yaw
+brew trust yawlabs/yaw   # Homebrew 5.1+ refuses casks from untrusted third-party taps
 brew install --cask yaw
 ```
+
+> On Homebrew older than 5.1 the `brew trust` line is unnecessary (and the
+> command does not exist); skip it. The `install-mac.sh` one-liner handles this
+> automatically.
 
 ## Update
 
