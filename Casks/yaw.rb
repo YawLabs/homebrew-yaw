@@ -1,9 +1,9 @@
 cask "yaw" do
   arch arm: "arm64", intel: "x64"
-  version "2.0.16"
+  version "2.0.17"
 
   if Hardware::CPU.arm?
-  sha256 "a829bd7490f8f2936cda5b277553fd02f8f648467a656fff3fe24dd2872447d6"
+  sha256 "c5baddcb46500c93bdb12b7c69515074096049613afd7616d81d13dc6c94b302"
   else
     sha256 "4357b4f401998b72d2cce3c27dbf0aa7e3b6e293bb8bbbeabf16057dd3f57a99"
   end
