@@ -3,7 +3,7 @@ cask "yaw" do
   version "2.0.20"
 
   if Hardware::CPU.arm?
-  sha256 "8d2030bbc19b8fc55839cd8dca82ff79bd57ced883b8f04991df87c4c9a069d7"
+  sha256 "41ea3adcea961dd87221925bc2c2afa1412ee779a4350067b07cd01d88f4f019"
   else
     sha256 "4357b4f401998b72d2cce3c27dbf0aa7e3b6e293bb8bbbeabf16057dd3f57a99"
   end
