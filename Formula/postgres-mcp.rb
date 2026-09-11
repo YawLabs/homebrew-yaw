@@ -4,6 +4,13 @@ class PostgresMcp < Formula
   version "0.6.21"
   license "MIT"
 
+  # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
+  # the per-arch binaries this formula downloads, so it can only ever install a
+  # build frozen months behind npm -- and some of those assets now 404. npm is
+  # the supported channel; the formula stays here, disabled, so brew can tell
+  # anyone with an old keg where to go instead of silently going stale.
+  disable! date: "2026-09-11", because: "is now distributed via npm: run `npx -y @yawlabs/postgres-mcp` instead"
+
   on_macos do
     on_arm do
       url "https://github.com/YawLabs/postgres-mcp/releases/download/v0.6.21/postgres-mcp-darwin-arm64", using: :nounzip

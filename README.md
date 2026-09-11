@@ -16,8 +16,23 @@ brew install --cask yaw
 > command does not exist); skip it. The `install-mac.sh` one-liner handles this
 > automatically.
 
+The tap also carries [oam](https://oamjs.org), a JavaScript/TypeScript runtime:
+
+```
+brew install yawlabs/yaw/oam
+```
+
+## MCP servers
+
+The Yaw Labs MCP servers install from npm, not from this tap:
+`npx -y @yawlabs/<name>` (for example `npx -y @yawlabs/aws-mcp`). See
+[yaw.sh/mcp-servers](https://yaw.sh/mcp-servers/) for the full list. Their old
+formulae are disabled here, so `brew install` refuses them and points you to
+npm; remove an existing keg with `brew uninstall <name>`.
+
 ## Update
 
 ```
 brew upgrade --cask yaw
+brew upgrade yawlabs/yaw/oam
 ```
