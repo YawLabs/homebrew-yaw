@@ -1,5 +1,5 @@
 class Oam < Formula
-  desc "JavaScript and TypeScript runtime built on Rust and V8, for TypeScript and MCP servers"
+  desc "JavaScript/TypeScript runtime on Rust and V8, for TypeScript and MCP servers"
   homepage "https://oamjs.org"
   version "0.15.0"
   license "Apache-2.0"

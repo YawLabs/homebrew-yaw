@@ -4,7 +4,7 @@ cask "yaw" do
 
   url "https://downloads.yaw.sh/yaw-darwin-arm64-#{version}.zip"
   name "yaw"
-  desc "A modern terminal with built-in connection management and AI assistance"
+  desc "Modern terminal with built-in connection management and AI assistance"
   homepage "https://yaw.sh"
 
   # Apple Silicon only. No mac-x64 artifact has been published since Intel was
