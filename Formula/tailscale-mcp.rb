@@ -1,7 +1,12 @@
 class TailscaleMcp < Formula
   desc "Tailscale MCP server for managing your tailnet from AI assistants"
   homepage "https://github.com/YawLabs/tailscale-mcp"
+  # Top-level url is the Linux x86_64 build; on_macos overrides it per arch.
+  # Every OS/arch that `brew tap` validates, arm64_linux included, must resolve
+  # to a url or the whole tap is refused. See Formula/oam.rb.
+  url "https://github.com/YawLabs/tailscale-mcp/releases/download/v0.13.1/tailscale-mcp-linux-x64", using: :nounzip
   version "0.13.1"
+  sha256 "e545ebd615c8e0a4f56a4d320f14b453e3911706fdbe9ce00f13347aff473cd9"
   license "MIT"
 
   # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
@@ -23,10 +28,7 @@ class TailscaleMcp < Formula
   end
 
   on_linux do
-    on_intel do
-      url "https://github.com/YawLabs/tailscale-mcp/releases/download/v0.13.1/tailscale-mcp-linux-x64", using: :nounzip
-      sha256 "e545ebd615c8e0a4f56a4d320f14b453e3911706fdbe9ce00f13347aff473cd9"
-    end
+    depends_on arch: :x86_64
   end
 
   def install

@@ -7,13 +7,16 @@ Homebrew tap for [yaw](https://yaw.sh) — terminal, ai, connections.
 ## Usage
 
 ```
+brew trust yawlabs/yaw   # trust first: current Homebrew refuses to tap an untrusted third-party tap
 brew tap yawlabs/yaw
-brew trust yawlabs/yaw   # Homebrew 5.1+ refuses casks from untrusted third-party taps
 brew install --cask yaw
 ```
 
-> On Homebrew older than 5.1 the `brew trust` line is unnecessary (and the
-> command does not exist); skip it. The `install-mac.sh` one-liner handles this
+> Run `brew trust` before `brew tap`. Current Homebrew validates a tap while
+> cloning it and refuses to load anything from an untrusted one, so tapping
+> first fails with "Cannot tap yawlabs/yaw: invalid syntax in tap!". On
+> Homebrew older than 5.1 the `brew trust` line is unnecessary (and the command
+> does not exist); skip it. The `install-mac.sh` one-liner handles this
 > automatically.
 
 The tap also carries [oam](https://oamjs.org), a JavaScript/TypeScript runtime:
