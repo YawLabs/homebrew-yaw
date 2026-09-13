@@ -1,7 +1,12 @@
 class RedisMcp < Formula
   desc "Redis MCP server - SCAN-based key exploration, TTL/memory/keyspace introspection, slowlog + INFO health, and a DBA advisor for AI assistants"
   homepage "https://github.com/YawLabs/redis-mcp"
+  # Top-level url is the Linux x86_64 build; on_macos overrides it per arch.
+  # Every OS/arch that `brew tap` validates, arm64_linux included, must resolve
+  # to a url or the whole tap is refused. See Formula/oam.rb.
+  url "https://github.com/YawLabs/redis-mcp/releases/download/v0.1.3/redis-mcp-linux-x64", using: :nounzip
   version "0.1.3"
+  sha256 "42891cdca9e65836328b64e7e3dc45e6b17cdaa4584eeef6bea4042288f13ea6"
   license "MIT"
 
   # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
@@ -23,10 +28,7 @@ class RedisMcp < Formula
   end
 
   on_linux do
-    on_intel do
-      url "https://github.com/YawLabs/redis-mcp/releases/download/v0.1.3/redis-mcp-linux-x64", using: :nounzip
-      sha256 "42891cdca9e65836328b64e7e3dc45e6b17cdaa4584eeef6bea4042288f13ea6"
-    end
+    depends_on arch: :x86_64
   end
 
   def install

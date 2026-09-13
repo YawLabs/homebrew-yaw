@@ -1,7 +1,12 @@
 class CaddyMcp < Formula
   desc "MCP server for managing Caddy web servers via the admin API"
   homepage "https://github.com/YawLabs/caddy-mcp"
+  # Top-level url is the Linux x86_64 build; on_macos overrides it per arch.
+  # Every OS/arch that `brew tap` validates, arm64_linux included, must resolve
+  # to a url or the whole tap is refused. See Formula/oam.rb.
+  url "https://github.com/YawLabs/caddy-mcp/releases/download/v1.3.1/caddy-mcp-linux-x64", using: :nounzip
   version "1.3.1"
+  sha256 "6ae98347eefeadfd5a71fa46b219bfd5550161a452d960b46e7f962c4d19996e"
   license "MIT"
 
   # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
@@ -23,10 +28,7 @@ class CaddyMcp < Formula
   end
 
   on_linux do
-    on_intel do
-      url "https://github.com/YawLabs/caddy-mcp/releases/download/v1.3.1/caddy-mcp-linux-x64", using: :nounzip
-      sha256 "6ae98347eefeadfd5a71fa46b219bfd5550161a452d960b46e7f962c4d19996e"
-    end
+    depends_on arch: :x86_64
   end
 
   def install

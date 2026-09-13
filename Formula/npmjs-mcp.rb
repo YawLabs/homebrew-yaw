@@ -1,7 +1,12 @@
 class NpmjsMcp < Formula
   desc "npm registry MCP server — package intelligence, security audits, and dependency analysis for AI assistants"
   homepage "https://github.com/YawLabs/npmjs-mcp"
+  # Top-level url is the Linux x86_64 build; on_macos overrides it per arch.
+  # Every OS/arch that `brew tap` validates, arm64_linux included, must resolve
+  # to a url or the whole tap is refused. See Formula/oam.rb.
+  url "https://github.com/YawLabs/npmjs-mcp/releases/download/v0.12.2/npmjs-mcp-linux-x64", using: :nounzip
   version "0.12.2"
+  sha256 "bf4334d7034e31e81cba44143f758b54166606d475801c0040cb4f6da19a7827"
   license "MIT"
 
   # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
@@ -23,10 +28,7 @@ class NpmjsMcp < Formula
   end
 
   on_linux do
-    on_intel do
-      url "https://github.com/YawLabs/npmjs-mcp/releases/download/v0.12.2/npmjs-mcp-linux-x64", using: :nounzip
-      sha256 "bf4334d7034e31e81cba44143f758b54166606d475801c0040cb4f6da19a7827"
-    end
+    depends_on arch: :x86_64
   end
 
   def install

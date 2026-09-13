@@ -1,7 +1,12 @@
 class AwsMcp < Formula
   desc "AWS MCP server — call any AWS API from AI assistants, with first-class SSO re-login (no more 'browser won't open' dead ends)"
   homepage "https://github.com/YawLabs/aws-mcp"
+  # Top-level url is the Linux x86_64 build; on_macos overrides it per arch.
+  # Every OS/arch that `brew tap` validates, arm64_linux included, must resolve
+  # to a url or the whole tap is refused. See Formula/oam.rb.
+  url "https://github.com/YawLabs/aws-mcp/releases/download/v1.5.2/aws-mcp-linux-x64", using: :nounzip
   version "1.5.2"
+  sha256 "5ca7fd222d60970fda0dd0e4760b9441904a0384545e8ae354aeddd6884e2bdd"
   license "MIT"
 
   # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
@@ -23,10 +28,7 @@ class AwsMcp < Formula
   end
 
   on_linux do
-    on_intel do
-      url "https://github.com/YawLabs/aws-mcp/releases/download/v1.5.2/aws-mcp-linux-x64", using: :nounzip
-      sha256 "5ca7fd222d60970fda0dd0e4760b9441904a0384545e8ae354aeddd6884e2bdd"
-    end
+    depends_on arch: :x86_64
   end
 
   def install

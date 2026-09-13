@@ -1,7 +1,12 @@
 class ElectronMcp < Formula
   desc "Electron.js MCP server — IPC scaffolding, security auditing, build tooling, and development intelligence for AI assistants"
   homepage "https://github.com/YawLabs/electron-mcp#readme"
+  # Top-level url is the Linux x86_64 build; on_macos overrides it per arch.
+  # Every OS/arch that `brew tap` validates, arm64_linux included, must resolve
+  # to a url or the whole tap is refused. See Formula/oam.rb.
+  url "https://github.com/YawLabs/electron-mcp/releases/download/v1.2.15/electron-mcp-linux-x64", using: :nounzip
   version "1.2.15"
+  sha256 "5801bd514108bca92214b6fef62746be2bf0795a841348b9712d6f6e106ce39e"
   license "MIT"
 
   # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
@@ -23,10 +28,7 @@ class ElectronMcp < Formula
   end
 
   on_linux do
-    on_intel do
-      url "https://github.com/YawLabs/electron-mcp/releases/download/v1.2.15/electron-mcp-linux-x64", using: :nounzip
-      sha256 "5801bd514108bca92214b6fef62746be2bf0795a841348b9712d6f6e106ce39e"
-    end
+    depends_on arch: :x86_64
   end
 
   def install

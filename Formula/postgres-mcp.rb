@@ -1,7 +1,12 @@
 class PostgresMcp < Formula
   desc "PostgreSQL MCP server - query, schema introspection, explain, and health checks for AI assistants"
   homepage "https://github.com/YawLabs/postgres-mcp"
+  # Top-level url is the Linux x86_64 build; on_macos overrides it per arch.
+  # Every OS/arch that `brew tap` validates, arm64_linux included, must resolve
+  # to a url or the whole tap is refused. See Formula/oam.rb.
+  url "https://github.com/YawLabs/postgres-mcp/releases/download/v0.6.21/postgres-mcp-linux-x64", using: :nounzip
   version "0.6.21"
+  sha256 "ac0b5ba686d5c3626eca5b73f69482287ff37f553519167aadd0c20db5210824"
   license "MIT"
 
   # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
@@ -23,10 +28,7 @@ class PostgresMcp < Formula
   end
 
   on_linux do
-    on_intel do
-      url "https://github.com/YawLabs/postgres-mcp/releases/download/v0.6.21/postgres-mcp-linux-x64", using: :nounzip
-      sha256 "ac0b5ba686d5c3626eca5b73f69482287ff37f553519167aadd0c20db5210824"
-    end
+    depends_on arch: :x86_64
   end
 
   def install

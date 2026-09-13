@@ -1,7 +1,12 @@
 class LemonsqueezyMcp < Formula
   desc "LemonSqueezy MCP server for managing your store from AI assistants"
   homepage "https://github.com/YawLabs/lemonsqueezy-mcp"
+  # Top-level url is the Linux x86_64 build; on_macos overrides it per arch.
+  # Every OS/arch that `brew tap` validates, arm64_linux included, must resolve
+  # to a url or the whole tap is refused. See Formula/oam.rb.
+  url "https://github.com/YawLabs/lemonsqueezy-mcp/releases/download/v0.10.13/lemonsqueezy-mcp-linux-x64", using: :nounzip
   version "0.10.13"
+  sha256 "f27c084df5f1a0630c5d4ae5b0395776144b39e83c30a9a9037fa86d1c0f1797"
   license "MIT"
 
   # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
@@ -23,10 +28,7 @@ class LemonsqueezyMcp < Formula
   end
 
   on_linux do
-    on_intel do
-      url "https://github.com/YawLabs/lemonsqueezy-mcp/releases/download/v0.10.13/lemonsqueezy-mcp-linux-x64", using: :nounzip
-      sha256 "f27c084df5f1a0630c5d4ae5b0395776144b39e83c30a9a9037fa86d1c0f1797"
-    end
+    depends_on arch: :x86_64
   end
 
   def install

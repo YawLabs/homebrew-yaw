@@ -1,7 +1,12 @@
 class FetchMcp < Formula
   desc "Comprehensive HTTP fetch MCP server: SSRF protection, HTML-to-markdown, reader-mode, metadata / link / sitemap / RSS-Atom extraction, robots.txt verdicts"
   homepage "https://github.com/YawLabs/fetch-mcp"
+  # Top-level url is the Linux x86_64 build; on_macos overrides it per arch.
+  # Every OS/arch that `brew tap` validates, arm64_linux included, must resolve
+  # to a url or the whole tap is refused. See Formula/oam.rb.
+  url "https://github.com/YawLabs/fetch-mcp/releases/download/v0.3.6/fetch-mcp-linux-x64", using: :nounzip
   version "0.3.6"
+  sha256 "6a8b0bf50f7ce97bd5500000722f36132fc44d50981184326de37212f3a690ec"
   license "MIT"
 
   # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
@@ -23,10 +28,7 @@ class FetchMcp < Formula
   end
 
   on_linux do
-    on_intel do
-      url "https://github.com/YawLabs/fetch-mcp/releases/download/v0.3.6/fetch-mcp-linux-x64", using: :nounzip
-      sha256 "6a8b0bf50f7ce97bd5500000722f36132fc44d50981184326de37212f3a690ec"
-    end
+    depends_on arch: :x86_64
   end
 
   def install

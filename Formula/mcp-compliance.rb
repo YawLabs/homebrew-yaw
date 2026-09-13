@@ -1,7 +1,12 @@
 class McpCompliance < Formula
   desc "CLI tool and MCP server that tests MCP servers for spec compliance"
   homepage "https://github.com/YawLabs/mcp-compliance"
+  # Top-level url is the Linux x86_64 build; on_macos overrides it per arch.
+  # Every OS/arch that `brew tap` validates, arm64_linux included, must resolve
+  # to a url or the whole tap is refused. See Formula/oam.rb.
+  url "https://github.com/YawLabs/mcp-compliance/releases/download/v0.16.2/mcp-compliance-linux-x64", using: :nounzip
   version "0.16.2"
+  sha256 "4fbbf29f466893d53bd46f45fefb0a63016681154d960efdfdde113816c74097"
   license "MIT"
 
   # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
@@ -23,10 +28,7 @@ class McpCompliance < Formula
   end
 
   on_linux do
-    on_intel do
-      url "https://github.com/YawLabs/mcp-compliance/releases/download/v0.16.2/mcp-compliance-linux-x64", using: :nounzip
-      sha256 "4fbbf29f466893d53bd46f45fefb0a63016681154d960efdfdde113816c74097"
-    end
+    depends_on arch: :x86_64
   end
 
   def install

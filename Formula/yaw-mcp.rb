@@ -1,7 +1,12 @@
 class YawMcp < Formula
   desc "Yaw MCP -- MCP servers, managed. Free to run locally; Yaw Team adds cross-machine sync."
   homepage "https://yaw.sh/mcp"
+  # Top-level url is the Linux x86_64 build; on_macos overrides it per arch.
+  # Every OS/arch that `brew tap` validates, arm64_linux included, must resolve
+  # to a url or the whole tap is refused. See Formula/oam.rb.
+  url "https://github.com/YawLabs/mcp/releases/download/v0.60.6/yaw-mcp-linux-x64", using: :nounzip
   version "0.60.6"
+  sha256 "403084d23c14b97475ca7ed897a09759bc0ae2453e6aa15aecb251e3b40e741d"
   license :cannot_represent
 
   # Retired from this tap on 2026-09-11. Upstream releases stopped publishing
@@ -23,10 +28,7 @@ class YawMcp < Formula
   end
 
   on_linux do
-    on_intel do
-      url "https://github.com/YawLabs/mcp/releases/download/v0.60.6/yaw-mcp-linux-x64", using: :nounzip
-      sha256 "403084d23c14b97475ca7ed897a09759bc0ae2453e6aa15aecb251e3b40e741d"
-    end
+    depends_on arch: :x86_64
   end
 
   def install
