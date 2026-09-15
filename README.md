@@ -31,11 +31,11 @@ The Yaw Labs MCP servers install from npm, not from this tap:
 formulae are disabled here, so `brew install` refuses them and points you to
 npm; remove an existing keg with `brew uninstall <name>`.
 
-<a href="https://x.com/TokenLimitNews"><img src="https://img.shields.io/badge/follow-%40TokenLimitNews-000000?logo=x&logoColor=white" alt="Follow @TokenLimitNews on X"></a>
-
 ## Update
 
 ```
 brew upgrade --cask yaw
 brew upgrade yawlabs/yaw/oam
 ```
+
+<a href="https://x.com/TokenLimitNews"><img src="https://img.shields.io/badge/follow-%40TokenLimitNews-000000?logo=x&logoColor=white" alt="Follow @TokenLimitNews on X"></a>
