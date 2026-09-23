@@ -1,6 +1,6 @@
 cask "yaw" do
-  version "2.1.6"
-  sha256 "ada6904f1370109d7a08ea06697d9952cf526bc601463f10ea4a28fddea96c32"
+  version "2.1.7"
+  sha256 "97854407a2d17f4dfb0c282acc4690003440b383c35a7ffb685c1b9c36980e5d"
 
   url "https://downloads.yaw.sh/yaw-darwin-arm64-#{version}.zip"
   name "yaw"
