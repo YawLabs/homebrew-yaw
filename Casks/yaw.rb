@@ -1,6 +1,6 @@
 cask "yaw" do
-  version "2.1.4"
-  sha256 "73e9924aa139b363d28ba8d0b3c435a7316f3155e0d0601a74b8c1d224bd90b4"
+  version "2.1.7"
+  sha256 "97854407a2d17f4dfb0c282acc4690003440b383c35a7ffb685c1b9c36980e5d"
 
   url "https://downloads.yaw.sh/yaw-darwin-arm64-#{version}.zip"
   name "yaw"
@@ -31,10 +31,18 @@ cask "yaw" do
   # upgrade, not just first install (confirmed 1.9.42 -> 1.9.48). Strip it after
   # each install/upgrade so the app launches without a manual `xattr -cr`. Remove
   # this once the app is notarized (the real fix; see install/release notes).
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-r", "-d", "com.apple.quarantine", "#{appdir}/yaw.app"],
-                   must_succeed: false
+  #
+  # Declarative `postflight_steps`, not a Ruby `postflight` block: Homebrew 7.0
+  # deprecated the block form (`brew doctor` warned on every cask load). Same
+  # command, same ignored failure: `must_succeed: false` keeps a missing or
+  # already-clean bundle non-fatal. `{{appdir}}` is Homebrew's install-time
+  # token, NOT Ruby interpolation -- steps are serialised before they run. They
+  # run in Homebrew's install sandbox, which already permits writes under
+  # appdir, so no `writable_paths` declaration is needed here.
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:         ["-r", "-d", "com.apple.quarantine", "{{appdir}}/yaw.app"],
+        must_succeed: false
   end
 
   zap trash: [
