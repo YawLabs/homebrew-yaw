@@ -14,11 +14,13 @@ brew install --cask yaw
 > to load formulae and casks from a third-party tap until you trust it, so
 > without that line `brew install --cask yaw` fails with "Refusing to load cask
 > yawlabs/yaw/yaw from untrusted tap yawlabs/yaw". Homebrew 7.0.0 and 7.0.1
-> also check every cask while cloning a tap, so on those versions tapping
-> first fails with "Cannot tap yawlabs/yaw: invalid syntax in tap!" (fixed in
-> 7.0.2). `brew trust` does not exist before Homebrew 5.1.15; on older versions
-> skip that line. The `install-mac.sh` one-liner handles all of this
-> automatically.
+> also verify every formula and cask while cloning a tap, so on those versions
+> tapping first fails with "Cannot tap yawlabs/yaw: invalid syntax in tap!"
+> (fixed in 7.0.2). `brew trust` does not exist before Homebrew 5.1.15. If it
+> is not found, run `brew update` first and then run it: `brew tap` and
+> `brew install` normally update Homebrew to the current release on their
+> own, and that release requires the trust. The `install-mac.sh` one-liner
+> handles all of this on Homebrew 5.1.15 and newer.
 
 The tap also carries [oam](https://oamjs.org), a JavaScript/TypeScript runtime.
 Installing it by its full name trusts just that formula, so no `brew trust` is
