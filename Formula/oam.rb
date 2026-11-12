@@ -1,19 +1,19 @@
 class Oam < Formula
   desc "JavaScript/TypeScript runtime on Rust and V8, for TypeScript and MCP servers"
   homepage "https://oamjs.org"
-  url "https://github.com/YawLabs/oam/releases/download/v0.20.0/oam-x86_64-unknown-linux-gnu", using: :nounzip
-  version "0.20.0"
-  sha256 "c594cb1389d6721f3e33047dad1d8cb06bee56620907aec2876fe3ad2527d40d"
+  url "https://github.com/YawLabs/oam/releases/download/v0.20.1/oam-x86_64-unknown-linux-gnu", using: :nounzip
+  version "0.20.1"
+  sha256 "b70d3a6709b1f2f839e83e745ddd409742f796262886bcbe1f011931e3fca91b"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/YawLabs/oam/releases/download/v0.20.0/oam-aarch64-apple-darwin", using: :nounzip
-      sha256 "6ef9120b82e602ee140f43a3c82b434ff2318283bd1f3ee63399e8f0dea86670"
+      url "https://github.com/YawLabs/oam/releases/download/v0.20.1/oam-aarch64-apple-darwin", using: :nounzip
+      sha256 "5e4c4e18301dda954a7e47760a0f7574b129f8d44e7eb20a4ce9f28ce4a06bf6"
     end
     on_intel do
-      url "https://github.com/YawLabs/oam/releases/download/v0.20.0/oam-x86_64-apple-darwin", using: :nounzip
-      sha256 "31c6456a9aa7f53f83df6f10889819fac5d2472b5b3e6adf84c3335285eb3e87"
+      url "https://github.com/YawLabs/oam/releases/download/v0.20.1/oam-x86_64-apple-darwin", using: :nounzip
+      sha256 "5a25848a158187229a8504f6956d84849bf652ab00a1ff395d0ad94abc6f810b"
     end
   end
 
